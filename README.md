@@ -49,6 +49,17 @@ Service identification is based on Nmap's scan results and may require further v
 
 Screenshots and the final lab report will be added to this repository.
 
+## Wireshark Evidence
+
+`wireshark-capture.pcapng` contains the packet capture collected from the `eth0` interface during the optional Wireshark analysis.
+
+To open the capture in Wireshark:
+
+`wireshark wireshark-capture.pcapng`
+
+To inspect it from the terminal using TShark:
+
+`tshark -r wireshark-capture.pcapng`
 
 ## Service Research, Risks, and Recommended Actions
 
