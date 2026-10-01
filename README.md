@@ -48,3 +48,19 @@ Service identification is based on Nmap's scan results and may require further v
 ## Evidence
 
 Screenshots and the final lab report will be added to this repository.
+
+
+## Service Research, Risks, and Recommended Actions
+
+The scan identified four open TCP ports on host `10.0.2.2`. An open port indicates that a network service is listening and reachable from the scanning environment; it does **not, by itself, confirm a security vulnerability**.
+
+| Port          | Service           | Potential Risk                                                                                                                            | Recommended Action                                                                                                                      |
+| ------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| **135/tcp**   | Microsoft RPC     | May increase the attack surface by exposing RPC functionality.                                                                            | Restrict RPC access with firewall rules to trusted systems where possible.                                                              |
+| **445/tcp**   | Microsoft-DS/SMB  | May expose file-sharing services to unauthorized access, misconfigured shares, weak authentication, or SMB-related vulnerabilities.       | Restrict SMB access to trusted systems, review shared resources and authentication controls, and keep Windows security updates current. |
+| **5357/tcp**  | Microsoft HTTPAPI | May provide unnecessary network exposure if the associated service is not required.                                                       | Verify whether the service is required and restrict or disable it when operationally appropriate.                                       |
+| **16992/tcp** | Intel AMT         | Remote-management functionality may introduce additional risk if improperly configured or exposed beyond the intended management network. | Restrict Intel AMT access to authorized management systems/networks and verify that AMT is properly configured and updated.             |
+
+### Assessment
+
+These are **potential security risks, not confirmed vulnerabilities**. Confirming a specific vulnerability would require additional authorized testing, configuration review, and vulnerability assessment.
